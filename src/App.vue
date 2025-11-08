@@ -8,9 +8,6 @@
 import { RouterView } from 'vue-router'
 </script>
 
-<style>
-#app {
-  min-height: 100vh;
-  background-color: var(--color-bg-primary);
-}
+<style scoped>
+
 </style>

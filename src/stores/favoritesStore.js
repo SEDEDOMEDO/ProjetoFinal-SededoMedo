@@ -2,17 +2,14 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
 export const useFavoritesStore = defineStore('favorites', () => {
-  // State
+
   const favorites = ref(JSON.parse(localStorage.getItem('favorites') || '[]'))
 
-  // Getters
   const favoritesCount = computed(() => favorites.value.length)
 
   const isFavorite = computed(() => {
     return movieId => favorites.value.some(fav => fav.id === movieId)
   })
-
-  // Actions
   function addFavorite(movie) {
     if (!isFavorite.value(movie.id)) {
       const favoriteMovie = {
@@ -51,12 +48,9 @@ export const useFavoritesStore = defineStore('favorites', () => {
   }
 
   return {
-    // State
     favorites,
-    // Getters
     favoritesCount,
     isFavorite,
-    // Actions
     addFavorite,
     removeFavorite,
     toggleFavorite,

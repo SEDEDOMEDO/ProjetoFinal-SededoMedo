@@ -3,7 +3,6 @@ import { ref, computed } from 'vue'
 import { tmdbService } from '@/services/tmdbService'
 
 export const useMoviesStore = defineStore('movies', () => {
-  // State
   const popularMovies = ref([])
   const topRatedMovies = ref([])
   const classicMovies = ref([])
@@ -11,14 +10,12 @@ export const useMoviesStore = defineStore('movies', () => {
   const loading = ref(false)
   const error = ref(null)
 
-  // Getters
   const allMovies = computed(() => [
     ...popularMovies.value,
     ...topRatedMovies.value,
     ...classicMovies.value
   ])
 
-  // Actions
   async function fetchPopular() {
     loading.value = true
     error.value = null
@@ -81,16 +78,13 @@ export const useMoviesStore = defineStore('movies', () => {
   }
 
   return {
-    // State
     popularMovies,
     topRatedMovies,
     classicMovies,
     currentMovie,
     loading,
     error,
-    // Getters
     allMovies,
-    // Actions
     fetchPopular,
     fetchTopRated,
     fetchClassics,

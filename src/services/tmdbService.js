@@ -3,7 +3,6 @@ import api from './api'
 const HORROR_GENRE_ID = 27
 
 export const tmdbService = {
-  // Buscar filmes populares de terror
   async fetchPopularHorror(page = 1) {
     const response = await api.get('/discover/movie', {
       params: {
@@ -14,8 +13,6 @@ export const tmdbService = {
     })
     return response.data
   },
-
-  // Buscar filmes de terror mais bem avaliados
   async fetchTopRatedHorror(page = 1) {
     const response = await api.get('/discover/movie', {
       params: {
@@ -27,8 +24,6 @@ export const tmdbService = {
     })
     return response.data
   },
-
-  // Buscar clássicos do terror (antes de 2000)
   async fetchClassicHorror(page = 1) {
     const response = await api.get('/discover/movie', {
       params: {

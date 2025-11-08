@@ -7,8 +7,6 @@ const api = axios.create({
     language: 'pt-BR'
   }
 })
-
-// Interceptor para tratamento de erros
 api.interceptors.response.use(
   response => response,
   error => {

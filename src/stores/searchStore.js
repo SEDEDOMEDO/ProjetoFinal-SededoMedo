@@ -3,14 +3,13 @@ import { ref } from 'vue'
 import { tmdbService } from '@/services/tmdbService'
 
 export const useSearchStore = defineStore('search', () => {
-  // State
+
   const searchQuery = ref('')
   const searchResults = ref([])
   const searchHistory = ref(JSON.parse(localStorage.getItem('searchHistory') || '[]'))
   const loading = ref(false)
   const error = ref(null)
 
-  // Actions
   async function searchMovies(query) {
     if (!query || query.trim().length < 3) {
       searchResults.value = []
@@ -55,13 +54,11 @@ export const useSearchStore = defineStore('search', () => {
   }
 
   return {
-    // State
     searchQuery,
     searchResults,
     searchHistory,
     loading,
     error,
-    // Actions
     searchMovies,
     addToHistory,
     clearHistory,

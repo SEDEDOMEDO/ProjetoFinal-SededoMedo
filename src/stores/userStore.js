@@ -2,11 +2,10 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
 export const useUserStore = defineStore('user', () => {
-  // State
+
   const ratings = ref(JSON.parse(localStorage.getItem('userRatings') || '[]'))
   const userId = ref(localStorage.getItem('userId') || generateUserId())
 
-  // Getters
   const ratingsCount = computed(() => ratings.value.length)
 
   const getRating = computed(() => {
@@ -16,7 +15,7 @@ export const useUserStore = defineStore('user', () => {
     }
   })
 
-  // Actions
+
   function generateUserId() {
     const id = 'user_' + Math.random().toString(36).substr(2, 9)
     localStorage.setItem('userId', id)
@@ -57,13 +56,10 @@ export const useUserStore = defineStore('user', () => {
   }
 
   return {
-    // State
     ratings,
     userId,
-    // Getters
     ratingsCount,
     getRating,
-    // Actions
     rateMovie,
     removeRating,
     clearRatings

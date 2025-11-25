@@ -55,9 +55,9 @@
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useMovieStore } from '@/stores/movie';
-import SearchBar from '@/components/SearchBar.vue';
-import MovieGrid from '@/components/MovieGrid.vue';
-import LoadingScreen from '@/components/LoadingScreen.vue';
+import SearchBar from '@/components/layout/SearchBar.vue';
+import MovieGrid from '@/components/movie/MovieGrid.vue';
+import LoadingScreen from '@/components/layout/LoadingScreen.vue';
 
 const route = useRoute();
 const router = useRouter();

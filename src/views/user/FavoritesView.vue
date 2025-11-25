@@ -1,4 +1,4 @@
-**3. views/FavoritesView.vue** ```vue
+
 <template>
   <div class="favorites">
     <div class="container">

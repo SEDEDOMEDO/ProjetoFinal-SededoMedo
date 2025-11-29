@@ -1,11 +1,8 @@
 <template>
   <div id="app">
-    <!-- Age Warning -->
     <AgeWarning v-if="!ageConfirmed" @accept="handleAgeAccept" />
 
-    <!-- Main App -->
     <div v-else class="app-content">
-      <!-- Header (esconde no login) -->
       <header v-if="!isLoginPage" class="app-header">
         <div class="container app-header__container">
           <router-link to="/" class="app-header__logo">
@@ -18,7 +15,6 @@
             <span>SEDE DO MEDO</span>
           </router-link>
 
-          <!-- Navigation -->
           <nav class="app-header__nav">
             <SearchBar />
 
@@ -29,7 +25,6 @@
               <span v-if="favoritesCount > 0" class="app-header__badge">{{ favoritesCount }}</span>
             </router-link>
 
-            <!-- User Section -->
             <UserDropdown v-if="isAuthenticated" :user="user" />
             <router-link v-else to="/login" class="app-header__login-btn">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -41,7 +36,6 @@
             </router-link>
           </nav>
 
-          <!-- Mobile Menu Toggle -->
           <button @click="mobileMenuOpen = !mobileMenuOpen" class="app-header__menu-toggle">
             <svg v-if="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="3" y1="12" x2="21" y2="12"/>
@@ -55,7 +49,6 @@
           </button>
         </div>
 
-        <!-- Mobile Menu -->
         <Transition name="slide-down">
           <div v-if="mobileMenuOpen" class="app-header__mobile-menu">
             <router-link to="/" @click="mobileMenuOpen = false" class="app-header__mobile-link">
@@ -86,14 +79,10 @@
         </Transition>
       </header>
 
-      <!-- Main Content -->
       <main class="app-main" :class="{ 'app-main--full': isLoginPage }">
-        <Transition name="fade" mode="out-in">
-          <router-view />
-        </Transition>
+        <router-view />
       </main>
 
-      <!-- Footer (esconde no login) -->
       <footer v-if="!isLoginPage" class="app-footer">
         <div class="container">
           <div class="app-footer__content">
@@ -129,7 +118,7 @@
           </div>
 
           <div class="app-footer__bottom">
-            <p>&copy; 2025 SEDE DO MEDO. Desenvolvido com 🩸 para fãs de terror.</p>
+            <p>&copy; 2025 SEDE DO MEDO. Desenvolvido com sangue para fãs de terror.</p>
           </div>
         </div>
       </footer>
@@ -206,6 +195,7 @@ onMounted(async () => {
   font-size: 1.5rem;
   font-weight: 900;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .app-header__logo:hover {
@@ -262,6 +252,7 @@ onMounted(async () => {
   font-weight: 600;
   font-size: 0.875rem;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .app-header__login-btn:hover {
@@ -340,6 +331,7 @@ onMounted(async () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 0;
 }
 
 .app-footer {
@@ -416,16 +408,6 @@ onMounted(async () => {
   border-top: 1px solid rgba(220, 38, 38, 0.2);
   color: #6b7280;
   font-size: 0.875rem;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 
 .slide-down-enter-active,
